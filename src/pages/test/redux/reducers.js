@@ -1,17 +1,21 @@
 import constants from './constants';
 
-const initState = {};
+const initState = {
+  message: null,
+};
 
 export default (state=initState, action) => {
 
   switch(action.type) {
     case `${constants.TEST_REQUEST}_PENDING`:{
-      console.warn('test request pending');
       break;
     }
 
     case `${constants.TEST_REQUEST}_FULFILLED`:{
-      console.warn('test request fulfilled', action);
+      return {
+        ...state,
+        message: action.payload.data.msg,
+      }
       break;
     }
 

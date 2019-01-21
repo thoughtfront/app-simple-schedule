@@ -10,23 +10,39 @@ class Test extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.message !== this.props.message) return true;
+    return false;
+  }
+
+  handleClick = () => {
     const { testRequest } = this.props;
-    console.warn('click');
+
     testRequest();
   }
 
   render() {
+    const { message } = this.props;
     return (
       <div>
         <Button color='primary' variant='contained' onClick={this.handleClick}>test</Button>
+        <div>
+          {!!message ?  message : "No Message"}
+        </div>
       </div>
     )
   }
+}
+
+const mapStateToProps = (state, props) => {
+  const { message } = state.test;
+  return {
+    message,
+  };
 }
 
 const mapDispatchToProps = dispatch => ({
   testRequest: () => dispatch(actions.testRequest()),
 });
 
-export default connect(null, mapDispatchToProps)(Test);
+export default connect(mapStateToProps, mapDispatchToProps)(Test);
