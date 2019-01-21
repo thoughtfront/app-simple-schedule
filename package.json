@@ -16,9 +16,10 @@
     "redux-promise-middleware": "^5.1.1"
   },
   "scripts": {
+    "build": "npm run build:local",
     "start": "npm run start:local",
-    "start:local": "HOST=local.app.simpleschedule.com PORT=3001 react-scripts start",
-    "build": "react-scripts build",
+    "start:local": "sh -ac '. local.env; . shared.env; HOST=local.app.simpleschedule.com PORT=3001 react-scripts start'",
+    "build:local": "sh -ac '. local.env; . shared.env; HOST=local.app.simpleschedule.com PORT=3001 react-scripts build'",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
