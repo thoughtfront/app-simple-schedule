@@ -4,6 +4,13 @@ import { HashRouter as Router } from 'react-router-dom';
 import store from './app/redux/stores';
 import { Provider } from 'react-redux';
 import App from './app';
+import axios from 'axios';
+import config from './configuration';
+import { onSuccess, onError } from './configuration/axios';
+
+axios.defaults.baseURL = config.apiHost;
+axios.interceptors.response.use(onSuccess, onError);
+
 
 ReactDOM.render(
   <Router>
