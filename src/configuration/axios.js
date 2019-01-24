@@ -1,3 +1,5 @@
+import store from '../app/redux/stores';
+import * as errorActions from '../app/redux/actions/errors';
 /*
     Response Interceptors
  */
@@ -18,11 +20,13 @@ export const onError = error => {
 		case 403:
 		case 404:
 		default:
-			console.error(`whoops a ${error.response.status}`, '- I do not know how to handle this yet');
+      store.dispatch(errorActions.setNetworkError(error.response.data.msg));
+			// console.error(`whoops a ${error.response.status}`, '- I do not know how to handle this yet');
 	}
 	return Promise.reject(error);
 };
 
 export const onSuccess = response => {
+  store.dispatch(errorActions.clearAllErrors());
   return response;
 }
