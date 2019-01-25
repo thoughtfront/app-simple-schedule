@@ -9,6 +9,7 @@ import config from './configuration';
 import { onSuccess, onError } from './configuration/axios';
 
 axios.defaults.baseURL = config.apiHost;
+axios.defaults.withCredentials = true;
 axios.interceptors.response.use(onSuccess, onError);
 
 

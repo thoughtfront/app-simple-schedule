@@ -3,5 +3,5 @@ import constants from './constants';
 
 export const testRequest = () => ({
   type: constants.TEST_REQUEST,
-  payload: axios.get('test', {withCredentials: true}),
+  payload: axios.get('test'),
 });
