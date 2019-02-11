@@ -21,13 +21,16 @@ class Test extends React.Component {
   }
 
   render() {
-    const { message } = this.props;
+    const { message, history } = this.props;
+    
     return (
       <div>
         <Button color='primary' variant='contained' onClick={this.handleClick}>test</Button>
         <div>
           {!!message ?  message : "No Message"}
         </div>
+
+        <Button variant='contained' onClick={() => history.replace('sign-out')}>Sign Out</Button>
       </div>
     )
   }

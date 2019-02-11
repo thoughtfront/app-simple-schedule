@@ -12,10 +12,6 @@ class SignIn extends React.Component {
       email: '',
       password: '',
     }
-
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleSignIn = this.handleSignIn.bind(this);
   }
 
   handleEmailChange = (event) => {
@@ -33,9 +29,9 @@ class SignIn extends React.Component {
   }
 
   handleSignIn = () => {
-    const { signIn } = this.props;
+    const { signIn, history } = this.props;
     const { email, password } = this.state;
-    signIn(email, password);
+    signIn(email, password).then( () => history.push('/test'));
   }
 
   render() {
