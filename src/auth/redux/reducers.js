@@ -23,7 +23,7 @@ export default (state=initState, action) => {
         loggedInUser: data.user,
       }
     }
-    case `${constants.AUTH_SIGN_IN}_FULFILLED`: {
+    case `${constants.AUTH_SIGN_OUT}_FULFILLED`: {
       const { data } = action.payload;
       return {
         ...state,
